@@ -1,0 +1,29 @@
+% layout 'default';
+% title 'MyTable';
+
+% content data_table_head => begin
+<thead>
+<tr>
+    % for my $col (@{stash 'columns'}) {
+    <th>
+        %= $col
+    </th>
+    % }
+</tr>
+</thead>
+% end
+
+%= content data_table => begin
+<table class="table table-condensed">
+%= content 'data_table_head'
+% while (my $row = $rows->next) {  
+    <tr>
+        % for my $col (@{stash 'columns'}) {
+          <td>
+            %= render_field($table, $col, $row->get_column($col));
+          </td>
+        % }        
+    </tr>  
+% }
+</table>
+% end

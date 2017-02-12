@@ -1,0 +1,15 @@
+% extends 'table/_default/show';
+
+<% my $field = begin %>
+  % my $value = shift;
+  Blah: <%= $value %>.
+<% end %>
+
+% content_with 'data_table_before' => begin
+hello world
+% end
+
+% content_with 'data_table_after' => begin
+the end ...
+% end
+
